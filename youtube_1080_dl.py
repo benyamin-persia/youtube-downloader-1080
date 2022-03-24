@@ -7,7 +7,7 @@ import ffmpeg
 yt = YouTube(input('enter youtube link : '))
 # for i in yt.streams.all():
 #     print(i)
-video = yt.streams.filter(res="1080p").first().download()
+video = yt.streams.filter(res="720p").first().download()
 v_name = video.title()+'.mp4'
 os.rename(video, v_name)
 
