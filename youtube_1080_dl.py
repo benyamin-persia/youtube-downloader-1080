@@ -1,22 +1,13 @@
-# pip install ffmpeg-python
+import yt_dlp 
+def download_video(link):
+    ydl_opts = {
+        'format': 'bestvideo+bestaudio',
+        'outtmpl': '%(title)s.%(ext)s',
+        'merge_output_format': 'mp4',
+        'ffmpeg_location': 'C:/ffmpeg/bin',  # Replace with the actual path
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([link])
 
-from pytube import *
-import os
-import ffmpeg
-
-yt = YouTube(input('enter youtube link : '))
-# for i in yt.streams.all():
-#     print(i)
-video = yt.streams.filter(res="1080p").first().download()
-v_name = video.title()+'.mp4'
-os.rename(video, v_name)
-
-audio = yt.streams.filter(only_audio=True).first().download()
-a_name = video.title()+".mp3"
-os.rename(audio, a_name)
-
-input_video = ffmpeg.input(v_name)
-
-input_audio = ffmpeg.input(a_name)
-
-ffmpeg.concat(input_video, input_audio, v=1, a=1).output(v_name.replace(".Mp4","")).run()
+link = input("Enter YouTube link: ")
+download_video(link)
