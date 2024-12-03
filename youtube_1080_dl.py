@@ -37,7 +37,7 @@ def verify_proxy(proxy_url):
 
 def download_video(link, use_proxy):
     """Download video using yt_dlp with or without a proxy server."""
-    proxy_url = 'socks5://uUqMyyy199BW37rANvgQk8xH:P6Vcwex2UpHz65eFBTrcH1Py@stockholm.se.socks.nordhold.net:1080'
+    proxy_url = 'socks5://username:password@stockholm.se.socks.nordhold.net:1080' # Put your NordVpn username password here
     
     ydl_opts = {
         'format': 'bestvideo+bestaudio',  # Ensures both video and audio are downloaded
